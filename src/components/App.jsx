@@ -17,6 +17,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('this.props', this.props);
     return (
       <div className="App">
         <div className="title">
@@ -45,8 +46,13 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({addReminder}, dispatch);
 }
 
+function mapStateToProps(state) {
+  return {
+    reminders: state
+  }
+}
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 // export default connect(null, {addReminder})(App);
 //Si fuera solo un binding, tambien se podria quitar el import de
 //bindActionCreators
